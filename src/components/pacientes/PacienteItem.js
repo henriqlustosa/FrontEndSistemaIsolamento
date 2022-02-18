@@ -31,12 +31,12 @@ function PacienteItem(props) {
     <li className={classes.item}>
       <Card>
         <div className={classes.image}>
-          <img src={props.image} alt={props.title} />
+          <img src={props.image} alt={props.usuario_id} />
         </div>
         <div className={classes.content}>
           <h3>{props.title}</h3>
-          <address>{props.address}</address>
-          <p>{props.description}</p>
+          <address>{props.nome}</address>
+          <p>{props.nome_mae}</p>
         </div>
         <div className={classes.actions}>
           <button onClick={toggleFavoriteStatusHandler}>

@@ -9,11 +9,11 @@ function MainNavigation() {
 
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>React Meetups</div>
+      <div className={classes.logo}>React Pacientes</div>
       <nav>
         <ul>
           <li>
-            <Link to='/'>All Meetups</Link>
+            <Link to='/'>All Pacientes</Link>
           </li>
           <li>
             <Link to='/new-paciente'>Add New Paciente</Link>

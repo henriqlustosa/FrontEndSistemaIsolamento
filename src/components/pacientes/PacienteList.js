@@ -4,7 +4,7 @@ import classes from './PacienteList.module.css';
 function PacienteList(props) {
   return (
     <ul className={classes.list}>
-      {props.meetups.map((paciente) => (
+      {props.pacientes.map((paciente) => (
         <PacienteItem
           key={paciente.id}
           id={paciente.id}
