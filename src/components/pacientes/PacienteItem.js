@@ -18,11 +18,11 @@ function PacienteItem(props) {
         prontuario: props.prontuario,
         nome: props.nome,
         vinculo: props.vinculo,
-        orgao_prefeitura: props.orgao_prefeitura,
-        rf_matricula: props.rf_matricula,
-        nome_mae: props.nome_mae,
-        data_nasciento: props.data_nascimento,
-        usuario_id: props.usuario_id, 
+        orgao_prefeitura: props.orgaoPrefeitura,
+        rfMatricula: props.rfMatricula,
+        nomeMae: props.nomeMae,
+        dataNascimento: props.dataNascimento,
+        usuarioId: props.usuarioId, 
       });
     }
   }
@@ -30,13 +30,15 @@ function PacienteItem(props) {
   return (
     <li className={classes.item}>
       <Card>
-        <div className={classes.image}>
-          <img src={props.image} alt={props.usuario_id} />
-        </div>
+      
         <div className={classes.content}>
-          <h3>{props.title}</h3>
-          <address>{props.nome}</address>
-          <p>{props.nome_mae}</p>
+          <h3>{props.nome}</h3>
+          <p>{props.prontuario}</p>
+          <p>{props.rfMatricula}</p>
+          <p>{props.vinculo}</p>
+          <p>{props.orgaoPrefeitura}</p>
+          <p>{props.nomeMae}</p>
+          <p>{props.dataNascimento}</p>
         </div>
         <div className={classes.actions}>
           <button onClick={toggleFavoriteStatusHandler}>

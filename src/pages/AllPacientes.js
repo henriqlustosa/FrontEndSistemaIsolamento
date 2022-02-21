@@ -24,20 +24,26 @@ function AllPacientesPage() {
       })
       .then((data) => {
         const pacientes = [];
-        console.log(data.content);
+var objCount = data.content.length;
+
+for (var x = 0; x < objCount; x++) {
+  var curitem = data.content[x]
+  pacientes.push(curitem);
+  
+}
+       // console.log(data.content);
        // for (const key in data.content) {
          // const paciente = {
           //  id: key,
           //  ...data[key]
          // };
-          
-          pacientes.push(data.content[0]);
-          console.log(pacientes)
+        //  pacientes.push(data.content[0]);
+        //  console.log(pacientes)
         //}
-
+       
         setIsLoading(false);
         setLoadedPacientes(pacientes);
-     
+     console.log(pacientes)
       });
   }, []);
 

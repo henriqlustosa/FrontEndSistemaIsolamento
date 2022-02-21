@@ -11,11 +11,11 @@ function PacienteList(props) {
           prontuario={paciente.prontuario}
           nome={paciente.nome}
           vinculo={paciente.vinculo}
-          orgao_prefeitura={paciente.orgao_prefeitura}
-          rf_matricula={paciente.rf_matricula}
-          nome_mae={paciente.nome_mae}
-          data_nasciento={paciente.data_nascimento}
-          usuario_id={paciente.usuario_id} 
+          orgaoPrefeitura={paciente.orgaoPrefeitura}
+          rfMatricula={paciente.rfMatricula}
+          nomeMae={paciente.nomeMae}
+          dataNascimento={paciente.dataNascimento}
+          usuarioId={paciente.usuarioId} 
         />
       ))}
     </ul>

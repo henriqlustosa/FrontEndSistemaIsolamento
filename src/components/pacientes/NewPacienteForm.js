@@ -7,11 +7,11 @@ function NewPacienteForm(props) {
   const prontuarioInputRef = useRef();
   const nomeInputRef = useRef();
   const vinculoInputRef = useRef();
-  const orgao_prefeituraInputRef = useRef();
-  const rf_matriculaInputRef = useRef();
-  const nome_maeInputRef = useRef();
-  const data_nascimentoInputRef = useRef();
-  const usuario_idInputRef = useRef();
+  const orgaoPrefeituraInputRef = useRef();
+  const rfMatriculaInputRef = useRef();
+  const nomeMaeInputRef = useRef();
+  const dataNascimentoInputRef = useRef();
+  const usuarioIdInputRef = useRef();
   
 
 
@@ -21,40 +21,60 @@ function NewPacienteForm(props) {
     const enteredProntuario = prontuarioInputRef.current.value;
     const enteredNome = nomeInputRef.current.value;
     const enteredVinculo = vinculoInputRef.current.value;
-    const enteredOrgao_Prefeitura = orgao_prefeituraInputRef.current.value;
-    const enteredRf_matricula = rf_matriculaInputRef.current.value;
-    const enteredNome_mae = nome_maeInputRef.current.value;
-    const enteredData_Nascimento = data_nascimentoInputRef.current.value;
-    const enteredUsuario_Id = usuario_idInputRef.current.value;
+    const enteredOrgaoPrefeitura = orgaoPrefeituraInputRef.current.value;
+    const enteredRfMatricula = rfMatriculaInputRef.current.value;
+    const enteredNomeMae = nomeMaeInputRef.current.value;
+    const enteredDataNascimento = dataNascimentoInputRef.current.value;
+    const enteredUsuarioId = usuarioIdInputRef.current.value;
     const pacienteData = {
       
       prontuario: enteredProntuario ,
       nome: enteredNome ,
       vinculo: enteredVinculo ,
-      orgao_prefeitura: enteredOrgao_Prefeitura ,
-      rf_matricula: enteredRf_matricula ,
-      nome_mae: enteredNome_mae ,
-      data_nascimento: enteredData_Nascimento,
-      usuario_id: enteredUsuario_Id ,
+      orgaoPrefeitura: enteredOrgaoPrefeitura ,
+      rfMatricula: enteredRfMatricula ,
+      nomeMae: enteredNomeMae ,
+      dataNascimento: enteredDataNascimento,
+      usuarioId: enteredUsuarioId ,
     };
 
-    props.onAddMeetup(pacienteData);
+    props.onAddPaciente(pacienteData);
   }
 
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor='prontuario'>Paciente Prontuario</label>
+          <label htmlFor='prontuario'>Prontuario</label>
           <input type='text' required id='prontuario' ref={prontuarioInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='nome'>Paciente Nome</label>
-          <input type='url' required id='nome' ref={nomeInputRef} />
+          <label htmlFor='nome'>Nome</label>
+          <input type='text' required id='nome' ref={nomeInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor='vinculo'>Paciente Vinculo</label>
+          <label htmlFor='vinculo'>Vinculo</label>
           <input type='text' required id='vinculo' ref={vinculoInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='orgaoPrefeitura'>Orgão da Prefeitura</label>
+          <input type='text' required id='orgaoPrefeitura' ref={orgaoPrefeituraInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='rfMatricula'> Registro Funcional</label>
+          <input type='text' required id='rfMatricula' ref={rfMatriculaInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='nomeMae'>Nome da Mãe</label>
+          <input type='text' required id='nomeMae' ref={nomeMaeInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='dataNascimento'>Data de Nascimento</label>
+          <input type='text' required id='dataNascimento' ref={dataNascimentoInputRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='usuarioId'>Usuario ID</label>
+          <input type='text' required id='usuarioId' ref={usuarioIdInputRef} />
         </div>
         <div className={classes.actions}>
           <button>Add Paciente</button>

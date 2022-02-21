@@ -1,22 +1,25 @@
-import { BrowserRouter as useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import NewPacienteForm from '../components/pacientes/NewPacienteForm';
 
 function NewPacientePage() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   function addPacienteHandler(pacienteData) {
     fetch(
-      'http://10.84.3.21:8080/pacientes',
+      'http://localhost:8080/pacientes',
       {
         method: 'POST',
         body: JSON.stringify(pacienteData),
         headers: {
+          
+          Accept: 'application/json',
           'Content-Type': 'application/json',
+          'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0.FcsRJwIQjQFKxKKgpyRbdY0Xdq-EGe9AApN1JfA8d4A",                    
         },
       }
     ).then(() => {
-      history.replace('/');
+      navigate('/', { replace: true });
     });
   }
 
