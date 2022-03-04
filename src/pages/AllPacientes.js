@@ -1,59 +1,44 @@
 import { useState, useEffect } from 'react';
 
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import PacienteList from '../components/pacientes/PacienteList';
 
 function AllPacientesPage() {
-  const [isLoading, setIsLoading] = useState(true);
+  
   const [loadedPacientes, setLoadedPacientes] = useState([]);
+  
+    const axiosPrivate = useAxiosPrivate();
+    const navigate = useNavigate();
+    const location = useLocation();
 
   useEffect(() => {
-    setIsLoading(true);
-  
-  
-    return fetch('http://localhost:8080/pacientes', {
-      method: 'GET',
-      headers:{
-        Accept: 'application/json',
-                 'Content-Type': 'application/json',
-                 'Authorization': "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIn0.FcsRJwIQjQFKxKKgpyRbdY0Xdq-EGe9AApN1JfA8d4A"
-         },
-    })
-      .then((response) => {
-        
-        return response.json();
-      })
-      .then((data) => {
-        const pacientes = [];
-var objCount = data.content.length;
+    let isMounted = true;
+    const controller = new AbortController();
 
-for (var x = 0; x < objCount; x++) {
-  var curitem = data.content[x]
-  pacientes.push(curitem);
-  
-}
-       // console.log(data.content);
-       // for (const key in data.content) {
-         // const paciente = {
-          //  id: key,
-          //  ...data[key]
-         // };
-        //  pacientes.push(data.content[0]);
-        //  console.log(pacientes)
-        //}
+    const getUsers = async () => {
+        try {
+            const response = await axiosPrivate.get('/pacientes', {
+                signal: controller.signal
+            });
+            console.log(response.data.content);
+            isMounted && setLoadedPacientes(response.data.content);
+        } catch (err) {
+            console.error(err);
+            navigate('/login', { state: { from: location }, replace: true });
+        }
+    }
+
+    getUsers();
+
+    return () => {
+        isMounted = false;
+        controller.abort();
+    }
+}, [axiosPrivate, location, navigate])
        
-        setIsLoading(false);
-        setLoadedPacientes(pacientes);
-     console.log(pacientes)
-      });
-  }, []);
 
-  if (isLoading) {
-    return (
-      <section>
-        <p>Loading...</p>
-      </section>
-    );
-  }
 
   return (
     <section>

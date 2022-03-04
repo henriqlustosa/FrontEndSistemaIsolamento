@@ -12,7 +12,9 @@ export function FavoritesContextProvider(props) {
   const [userFavorites, setUserFavorites] = useState([]);
 
   function addFavoriteHandler(favoritePaciente) {
+    
     setUserFavorites((prevUserFavorites) => {
+     
       return prevUserFavorites.concat(favoritePaciente);
     });
   }

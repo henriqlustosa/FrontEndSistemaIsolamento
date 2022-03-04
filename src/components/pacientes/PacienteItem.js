@@ -24,6 +24,8 @@ function PacienteItem(props) {
         dataNascimento: props.dataNascimento,
         usuarioId: props.usuarioId, 
       });
+      
+      console.log(favoritesCtx);
     }
   }
 
